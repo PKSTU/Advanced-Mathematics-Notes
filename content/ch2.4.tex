@@ -1,0 +1,360 @@
+\chapter{微分中值定理及其应用}\label{ch:4}
+
+本节学习高等数学中的一大重点和难点——三大微分中值定理，在学习的过程中，同学们要深刻领会中值定理的含义，并掌握几类重点题型，具体需要大家：
+
+\begin{enumerate}
+	\item \textbf{理解}函数极值点的定义，\textbf{掌握}求极值点的方法；
+	\item \textbf{深刻理解}Roll定理的含义，\textbf{熟练掌握}Roll定理的证明题；
+	\item \textbf{深刻理解}Lagrange定理的含义，\textbf{了解}证明不等式的一般思路和由定理拓展的推论，\textbf{熟练掌握}利用定理求极限；
+	\item \textbf{理解}Cauchy定理的含义，能利用定理理解L'Hospital法则和Taylor定理的证明过程；
+	\item \textbf{深刻理解}L'Hospital法则的使用条件，\textbf{熟练掌握}利用L'Hospital法则求极限，\textbf{牢记}使用L'Hospital法则的误区。
+\end{enumerate}
+
+\section{复习背景}\label{sec:4.1}
+
+\subsection{微分的定义}\label{sec:4.1.1}
+
+\begin{definition}
+	设有函数$f:U(x_0)\to\mathbb{R}$，若存在一个与$\Delta x$无关的线性函数\mn{微分的几何意义是在局部用线性函数替代非线性函数，是一种局部线性化的思维。}$L(\Delta x)=\alpha\Delta x$，使得
+	\begin{equation}
+		f(x_0+\Delta x)-f(x_0)=\alpha\Delta x+o(\Delta x)
+	\end{equation}
+	则称$f$在$x_0$处可微，并\textbf{称$\alpha\Delta x$为$f$在$x_0$处的微分。}
+\end{definition}
+
+\subsection{一元函数可微的充要条件}\label{sec:4.1.2}
+
+对于\textbf{一元函数}而言，\textbf{可微和可导互为充要条件。}
+
+\begin{remark}
+	虽然在一元函数的范畴内可微和可导等价，但是这两种运算的思路和定义是截然不同的，读者应该深刻理解。\textbf{同时当拓展到多元函数时，可微和可导不再等价。}
+\end{remark}
+
+\section{知识点初始——函数的极值及其必要条件}\label{sec:4.2}
+
+\subsection{函数极值点的定义}\label{sec:4.2.1}
+
+\begin{definition}
+	设有函数$f:I\to\mathbb{R}$，若$\exists\delta>0$，使得$\forall x\in U(x_0,\delta)\subseteq I$，恒有$f(x)\geq f(x_0)$（$\leq f(x_0)$），则称$f$在$x_0$取得极小（大）值$f(x_0)$。$f$的极小值与极大值统称为$f$的极值，\textbf{使$f$取得极值点的点$x_0$称为$f$的极值点。}
+\end{definition}
+
+\begin{remark}
+	极值点的定义是一个局部概念，简而言之就是\textbf{函数增减趋势发生改变}的点叫做极值点。
+\end{remark}
+
+\subsection{Fermat定理}\label{sec:4.2.2}
+
+\begin{theorem}
+	若函数$f:(a,b)\to\mathbb{R}$在$x_0\in (a,b)$处取得极值，且$f$在$x_0$处可导，则$f'(x_0)=0$。
+\end{theorem}
+
+\begin{remark}
+	（1）简而言之，区间内部的极值点处导数必定为0。（2）在后续学习完函数的最值后，我们可以推广得到区间内部的可导最值点的导数必定为0，这为部分采用“先猜后证”的题目提供了思路，在必要性探路方面有用处。
+\end{remark}
+
+\section{知识点初始——三大中值定理}\label{sec:4.3}
+三大中值定理将函数与导数联系起来，在研究函数的性态方面有着重要作用，由三大中值定理拓展来的各种定理和技巧，也频繁应用到各种题目中。因此掌握这些定理非常重要，希望同学们反复思考，加深理解。
+
+\subsection{Roll定理}\label{sec:4.3.1}
+
+\begin{theorem}
+	若函数$f:[a,b]\to\mathbb{R}$满足条件：（1）$f$在$[a,b]$上连续；（2）$f$在$(a,b)$内可导；（3）$f(a)=f(b)$，则至少存在一点$\xi\in (a,b)$，使$f'(\xi)=0$。
+\end{theorem}
+
+\subsubsection{几何意义}
+一条光滑曲线，在端点函数值相等的一个区间内，必有水平切线。
+
+\begin{remark}
+	掌握三大定理的几何意义对牢记定理内容有着重要意义，希望大家认真理解。
+\end{remark}
+
+\subsection{Lagrange定理}\label{sec:4.3.2}
+
+\begin{theorem}
+	若函数$f:[a,b]\to\mathbb{R}$满足条件：（1）$f$在$[a,b]$连续；（2）$f$在$(a,b)$内可导，则至少存在一点$\xi\in (a,b)$，使
+	\begin{equation}
+		f(b)-f(a)=f'(\xi)(b-a)\label{eq:4.2}
+	\end{equation}
+\end{theorem}
+
+\subsubsection{几何意义}
+在满足定理\mn{Lagrange定理在求极限，研究函数性态，证明拓展定理等方面有重要作用，大家一定要认真理解。}条件的情况下，过曲线上两点作一条割线，则在这两点之间必存在一点，使得这点的切线平行于该割线。
+\subsection{Cauchy定理}\label{sec:4.3.3}
+
+\begin{theorem}
+	若函数$f,g:[a,b]\to\mathbb{R}$满足条件：（1）$f,g$在$[a,b]$上连续；（2）$f,g$在$(a,b)$内可导，并且$\forall \in (a,b),g'(x)\neq 0$，则至少存在一点$\xi\in (a,b)$，使
+	\begin{equation}
+		\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}\label{eq:4.3}
+	\end{equation}
+\end{theorem}
+
+\subsubsection{几何意义}
+Cauchy定理\mn{后续证明L'Hospital法则与Taylor定理都是以Cauchy定理为基础的，深入理解该定理对后续的学习有很大帮助作用。}可以看作Lagrange定理的参数形式，令$x=g(t),y=f(t)$定理左侧表示割线的斜率，右侧表示一点的切线斜率，这与Langrange定理的几何意义是一致的。
+
+\section{知识点初始——L'Hospital法则}\label{sec:4.4}
+
+\subsection{定理内容}\label{sec:4.4.1}
+
+\subsubsection{$\frac{0}{0}$型不定式}
+
+\begin{theorem}
+	设函数$f,g$在区间$(x_0,x_0+\delta)$（其中$\delta>0$）内满足条件：（1）$\lim_{x\to x_0^+}f(x)=\lim_{x\to x_0^+}g(x)=0$；（2）$f,g$在$(x_0,x_0+\delta)$内可导，且$g'(x)\neq 0$；（3）$\lim_{x\to x_0^+}\frac{f'(x)}{g'(x)}=a$（$a$为有限实数或无穷大），则
+	\begin{equation}
+		\lim_{x\to x_0^+}\frac{f(x)}{g(x)}=\lim_{x\to x_0^+}\frac{f'(x)}{g'(x)}=a\label{eq:4.4}
+	\end{equation}
+\end{theorem}
+
+\subsubsection{$\frac{\infty}{\infty}$型不定式}
+
+\begin{theorem}
+	设$f,g$在$(x_0,x_0+\delta)$内满足上述定理中的条件（2）与（3），条件（1）改为
+	\[\lim_{x\to x_0^+}f(x)=\lim_{x\to x_0^+}g(x)=\infty\]
+	则有同样的结论成立。
+\end{theorem}
+
+\subsection{应用范围}
+
+除了上述两种不定式之外，还有$0\times\infty$，$\infty -\infty$，$1^\infty$，$0^0$，$\infty ^0$等类型\mn{考试中经常出现的是定理给出的两种类型，其余的类型大家稍作了解即可，关键在于转化的技巧。}，它们的极限都能转化为上述两种类型计算。
+
+\begin{remark}
+	在应用L'Hospital法则时，可以适当利用等价无穷小代换来减少计算量。
+\end{remark}
+
+\section{Roll定理的应用}\label{sec:4.5}
+总的来说，三大中值定理的主要考点是在于证明题，部分技巧和定理的证明也需要用到中值定理，这是考试的\textbf{重点和难点}，同学们要认真理解，反复练习。
+
+\subsection{Roll定理的证明题的解题思路}\label{sec:4.5.1}
+
+将欲证等式写成等号一端只有0，再构造辅助函数\mn{Roll定理证明题的难点一般在于辅助函数的寻找，需要同学们多多积累。}，其步骤为：
+\begin{enumerate}
+	\item 将$f(\xi)=0$写成$f(x)=0$；
+	\item 根据$f(x)$构造辅助函数$F(x)$，常用方法是：
+	\begin{enumerate}[label=(\arabic*)]
+		\item 直接观察利用导数的运算法则凑微分，例如：
+		\begin{align*}
+			&f(x)=P'(x)Q(x)+P(x)Q'(x)\to F(x)=P(x)Q(x)\\
+			&f(x)=P(x)+P(x)Q'(x)\to F(x)=P(x)e^{Q(x)}\\
+			&f(x)=P'(x)Q(x)-P(x)Q'(x)\to F(x)=\frac{P(x)}{Q(x)}\\
+		\end{align*}
+		\item 利用定积分$F(x)=\int ^x_0f(x)\mathrm{d}x$得到辅助函数$F(x)$；
+		\item 解微分方程得到辅助函数$F(x)$；
+	\end{enumerate}
+    \item 验证辅助函数$F(x)$在给定的区间上满足Roll定理的条件，便可推出待证结论。
+\end{enumerate}
+
+\subsection{Roll定理研究方程的根}\label{sec:4.5.2}
+
+由Roll定理可以得到推论：\textbf{可微函数$f$的任意两个零点之间至少有导函数$f'$的一个零点。}
+
+相关证明题有两种常见思路：一种是将待证函数看作某个函数的导数，通过研究其原函数来证明零点；另一种是利用反证法，得到与定理相悖的结果，这种方法经常应用在唯一性的证明当中。
+
+\section{Langrange定理的推广应用}\label{sec:4.6}
+\subsection{证明不等式}\label{sec:4.6.1}
+
+利用微分中值定理证明不等式的方法是：
+\begin{enumerate}
+	\item 根据不等式的特点，选择适当的函数与区间；
+	\item 对等式中的导数部分做估计（放大或缩小），得到所证明的结果。
+\end{enumerate}
+
+\subsection{求极限}\label{sec:4.6.2}
+
+当极限式中含有某一函数的增量时，可以考虑用微分中值定理，但需要注意的是，定理中的$\xi$实际上\textbf{会随着端点的变化而变化，即$\xi=\xi (x)$}，因此，对于极限这样一个动态过程，讨论$\xi$的取值和极限过程中$\xi$的极限是不可或缺的，否则会导致错解。
+
+\subsection{导数极限定理}\label{sec:4.6.3}
+
+\begin{theorem}
+	设函数$f$在$[x_0,b)$（或$(a,x_0]$）上连续，在$(x_0,b)$（或$(a,x_0)$）内可导，且$\lim_{x\to x_0^+}f'(x)=A$（或$\lim_{x\to x_0^-}f'(x)=A$），则
+	\begin{equation}
+		f'_+(x_0)=\lim_{x\to x_0^+}f'(x)=A~(f'_-(x_0)=\lim_{x\to x_0^-}f'(x)=A)\label{eq:4.5}
+	\end{equation}
+	其中$A$为有限或无限。
+\end{theorem}
+
+其证明过程教材中已经给出，此处不再赘述。
+
+\begin{remark}
+	该定理可以简记为：某一点的右（左）导数等于该点导数的右（左）极限。
+\end{remark}
+
+\subsubsection{应用}
+该定理为求分段函数在分段点的可导性提供了思路，利用该定理比用导数的定义更简单；但是需要注意，\textbf{不可忽视该定理的条件}，在应用前一定要考虑是否满足定理条件。
+
+\subsection{导数的Darboux定理（介值定理）}\label{sec:4.6.4}
+
+\begin{theorem}
+	设$f(x)$在$[a,b]$上可导\mn{Darboux定理并不要求$f'(x)$在区间$[a,b]$连续，比连续函数的介值定理的条件要弱得多。}且$f'(a)\neq f'(b)$，则对介于$f'(a),f'(b)$之间的任何值$r$，都存在$\xi\in (a,b)$使得$r=f'(\xi)$。
+\end{theorem}
+
+\begin{proof}
+	设$f'(a)<r<f'(b)$，作函数：
+	\begin{equation*}
+		F(x)=\left\{\begin{aligned}&\frac{f(x)-f(a)}{x-a},&x\neq a\\
+		&f'(a)\quad,&x=a\end{aligned}\right.
+	\end{equation*}
+	\begin{equation*}
+		G(x)=\left\{\begin{aligned}&\frac{f(x)-f(b)}{x-b},&x\neq b\\
+		&f'(b),&x=b\end{aligned}\right.
+	\end{equation*}
+	
+	易知$F(x),G(x)\in C[a,b]$，且$r$要么在$F(a)$与$F(b)$之间，要么在$G(a)$与$G(b)$之间。
+	
+	如果$r$在$F(a)$与$F(b)$之间，由连续函数的介值定理，知$\exists x_0\in (a,b)$，使$F(x_0)=r$，即
+	\[\frac{f(x_0)-f(a)}{x_0-a}=r\]
+	对$f(x)$用Lagrange定理知，在$a$与$x_0$之间存在$\xi$，使$f'(\xi)=r$
+	
+	对$f(x)$在$G(a)$与$G(b)$之间，类似可证。
+\end{proof}
+
+\subsubsection{定理应用}
+由Darboux定理可以得到两个推论\mn{第一个推论给出了导数的零点和函数的单调性的关系，在一些证明题如零点问题中可能会用到，第二个推论稍作了解即可。}：
+
+\begin{itemize}
+	\item 若函数$f'(x)$在闭区间$[a,b]$上异于零，即$\forall x\in [a,b],f'(x)\neq 0$，则那么在$[a,b]$上恒有$f'(x)>0$或$f'(x)<0$。
+	\item 区间$I$上的导函数不存在第一类间断点。
+\end{itemize}
+
+\section{L'Hospital法则使用的注意点及求极限的正确思路}\label{sec:4.7}
+
+\subsection{L'Hospital法则的使用误区}\label{sec:4.7.1}
+
+\subsubsection{循环论证误区}
+在证明某些用于推到函数导数的极限当中，不可使用L'Hospital法则，否则会陷入“利用导函数证明导函数的循环论证”例如下面的错解：
+\[\lim_{x\to 0}\frac{\sin{x}}{x}=\lim_{x\to 0}\frac{(\sin{x})'}{x'}=\lim_{x\to 0}\frac{\cos{x}}{1}=1\]
+
+该极限在证明$\sin{x}$的导数当中用到，故不能使用L'Hospital法则。
+\subsubsection{主观添加条件，臆想L'Hospital法则成立}
+在一些证明题的证明过程中，计算部分极限（特别是抽象函数的极限）时，题目没有给出导函数连续，甚至没有给出可导条件，而初学者又往往忽视L'Hospital法则的前置条件\mn{一般证明题中涉及导数的，大部分可以考虑利用导数的定义式计算。}，造成证明过程错误。
+
+\subsubsection{错误理解L'Hospital法则与极限存在的关系}
+在使用L'Hospital法则后发现极限不存在，并不能说明原式极限不存在，即在满足条件的情况下，也并不是所有极限都可以使用L'Hospital法则的。
+
+\subsubsection{使用后大幅增加计算量}
+在使用完L'Hospital法则以后，使得极限更加复杂，这时就不宜使用L'Hospital法则，应当另寻他法。
+
+\subsection{分析极限题的正确思路}
+在拿到极限题时，首选Taylor公式（等价无穷小代换），其次考虑是否可以利用微分中值定理。对于使用L'Hospital法则的情况，有且只有在极限式中出现变限积分的时候（课本的第三章会讲述）。
+
+\section{习题}
+
+\begin{problem}
+	设函数$f(x)\in C[a,b]\cap D(a,b)$，其中$a>0$，且$f(a)=0$。证明：$\exists\xi\in (a,b)$，使得$f(\xi)=\frac{b-\xi}{a}f'(\xi)$。
+	\begin{solution}
+		做恒等变形，利用凑微分法构造辅助函数。
+		
+		将等式中的$\xi$换为$x$，并变形得
+		\[\frac{f'(x)}{f(x)}-\frac{a}{b-x}=0\]
+		
+		积分得
+		\[\ln{f(x)}-\ln{(b-x)}^{-a}=\ln{C}\]
+		
+		得到辅助函数
+		\[F(x)=(b-x)^{a}f(x)\]
+		
+		由题意知：$F(x)\in C[a,b]\cap D(a,b)$，又$F(b)=0=F(a)$，由Roll定理知：$\exists\xi\in (a,b)$，使得$F'(\xi)=0$，即
+		\[(b-\xi)^{a}f'(\xi)-a(b-\xi)^{a-1}f(\xi)=0\Rightarrow f(\xi)=\frac{b-\xi}{a}f'(\xi)\]
+	\end{solution}
+\end{problem}
+
+\begin{problem}
+	设${\rm e}<a<b<{\rm e}^2$，证明：$\ln^2{b}-\ln^2{a}>\frac{4}{{\rm e}^2}(b-a)$
+	
+	\begin{proof}
+		不等式左边是函数$\ln^2{x}$在区间$[a,b]$的增量，右边是自变量在对应区间上的增量的常数倍，所以可以考虑用Lagrange定理来证明。
+		
+		令$f(x)=\ln^2{x}$，在$[a.b]$上由Lagrange定理，有
+		\[\ln^2{b}-\ln^2{a}=\frac{2\ln{\xi}}{\xi}(b-a)\quad (a<\xi <b)\]
+		
+		易求得函数$\frac{f(x)}{x}$在区间$[a,b]$上单调减少，其最小值为$f{e^2}=\frac{2}{e^2}(b-a)$，所以
+		\[\frac{2\ln{\xi}}{\xi}>\frac{4}{e^2}\to \ln^2{b}-\ln^2{a}>\frac{4}{e^2}(b-a)\]
+	\end{proof}
+\end{problem}
+
+\begin{problem}
+	设由Lagrange定理可得到${\rm e}^x-1=x^{\rm e} {\rm e}^{\theta x}(0<\theta <1)$，求$c+\lim_{x\to 0}\theta$
+	
+	\begin{solution}
+		令$f(x)={\rm e}^x,a=0,b=x$，根据Lagrange定理，有
+		\[f(b)-f(a)=f'[a+(b-a)\theta](b-a)\]
+		
+		代入得${\rm e}^x-1=x^{\rm e} {\rm e}^{\theta x}(0<\theta <1)$，得到$c=1$。
+		
+		要求$\theta$的极限，可以考虑将含有$\theta$的式子放到一边，${\rm e}^{\theta x}=\frac{{\rm e}^x-1}{x}$，所以$\theta x=\ln(\frac{{\rm e}^x-1}{x})\Rightarrow \theta=\frac{\ln{({\rm e}^x-1)}-\ln{x}}{x}$，那么
+		
+		\begin{align*}
+		    \lim_{x\to 0}\theta&=\lim_{x\to 0}\frac{\ln{({\rm e}^x-1)}-\ln{x}}{x}\xlongequal{\text{L'Hospital}}\lim_{x\to 0}\frac{x {\rm e}^x-{\rm e}^x+1}{x({\rm e}^x-1)}\\
+			&=\lim_{x\to 0}\frac{x {\rm e}^x-{\rm e}^x+1}{x^2}\xlongequal{\text{L'Hospital}}\lim_{x\to 0}\frac{x {\rm e}^x}{2x}=\frac{1}{2}
+		\end{align*}
+	
+		所以，$c+\lim_{x\to 0}\theta=\frac{3}{2}$。
+	\end{solution}
+\end{problem}
+
+\begin{problem}
+	设$f(x)$在$[0,1]$连续，在$(0,1)$可导，且$f(0)=0, f(1)=1$。
+	\begin{enumerate}[label=（\arabic*）]
+	    \item 证明：$\exists 0<c<1$，使得$f(c)=\frac{1}{2}$；
+	    \item 证明：$\exists\xi\in (0,c),\eta\in (c,1)$，使得$\frac{1}{f'(\xi)}+\frac{1}{f'(\eta)}=2$。
+	\end{enumerate}
+	
+	\begin{proof}
+		\begin{enumerate}[label=（\arabic*）]
+			\item 令$g(x)=f(x)-\frac{1}{2}$，由于$g(0)=-\frac{1}{2},g(1)=\frac{1}{2}$，则$g(0)g(1)<0$
+			
+			由零点存在定理可知：$\exists 0<c<1$，使得$g(c)=0$，即$f(c)=\frac{1}{2}$。
+			
+			\item 在$(0,c)$，$(c,1)$上分别使用Lagrange定理，即$\exists\xi\in (0,c),\eta\in (c,1)$，使得
+			\[f'(\xi)=\frac{f(c)-f(0)}{c-0}\Rightarrow \frac{1}{f'(\xi)}=2c,~ f'(\eta)=\frac{f(1)-f(c)}{1-c}\Rightarrow\frac{1}{f'(\eta)}=2-2c\]
+			
+			所以$\frac{1}{f'(\xi)}+\frac{1}{f'(\eta)}=2$。
+		\end{enumerate}
+	\end{proof}
+\end{problem}
+
+\begin{problem}
+	求极限
+	\[\lim_{n\to\infty}n^2\qty(\arctan{\frac{a}{n}}-\arctan{\frac{a}{n+1}})~(a\neq 0)\]
+	\begin{solution}
+		极限式中含有函数的增量，考虑使用Lagrange定理。
+		
+		对$f(x)=\arctan{ax}$在$\qty[\frac{1}{n+1},\frac{1}{n}]$上用Lagrange定理，有
+		\begin{align*}
+			\arctan{\frac{a}{n}}-\arctan{\frac{a}{n+1}}&=\frac{1}{1+a^2\xi^2}\qty(\frac{1}{n}-\frac{1}{n+1})\\
+			&=\frac{1}{1+a^2\xi^2}\cdot \frac{1}{n(n+1)}~\qty(\text{其中，}\frac{1}{n+1}<\xi <\frac{1}{n})
+		\end{align*}
+		
+		当$n\to\infty$时，$\xi\to 0$，所以原式等于
+		\[\lim_{\xi\to 0}\frac{1}{1+a^2\xi^2}\cdot\lim_{n\to\infty}\frac{n^2}{n(n+1)}=a\]
+	\end{solution}
+\end{problem}
+
+\begin{problem}
+	求极限
+	\[\lim_{x\to 0}\qty(\frac{1}{x^2}-\cot^2{x})\]
+	\begin{solution}
+		这是$\infty-\infty$型，通分化为$\frac{0}{0}$或$\frac{\infty}{\infty}$，再利用L'Hospital法则。
+		\begin{align*}
+			\lim_{x\to 0}\qty(\frac{1}{x^2}-\cot^2{x})&=\lim_{x\to 0}\qty(\frac{1}{x^2}-\frac{\cos^2{x}}{\sin^2{x}})=\lim_{x\to 0}\qty(\frac{\sin^2{x}-x^2\cos^2{x}}{x^2\sin^2{x}})\\
+			&=\lim_{x\to 0}\qty(\frac{1-(x^2+1)\cos^2{x}}{x^4})=\lim_{x\to 0}\qty(\frac{-2x\cos^2{x}+2(x^2+1)\cos{x}\sin{x}}{4x^3})\\
+			&=\lim_{x\to 0}\frac{(-x\cos{x}+\sin{x})\cos{x}}{2x^3}+\lim_{x\to 0}\frac{2x^2\cos{x}\sin{x}}{4x^3}\\
+			&=\lim_{x\to 0}\frac{-x\cos{x}+\sin{x}}{2x^3}+\lim_{x\to 0}\frac{2x^2\sin{x}}{4x^3}\\
+			&=\lim_{x\to 0}\frac{x\sin{x}}{6x^2}+\frac{1}{2}=\frac{1}{6}+\frac{1}{2}=\frac{2}{3}\\
+		\end{align*}
+	\end{solution}
+\end{problem}
+
+\begin{problem}[思考题]
+	设函数$f(x)$在$(-\infty,+\infty)$上可微，且$f(0)=0, \left|f'(x)\right|\leq p\left|f(x)\right|, 0<p<1$，证明：$f(x)\equiv 0,x\in (-\infty,+\infty)$。
+	\begin{proof}
+		先考虑$x\in [0,1],f(x)$为连续函数且可导，所以$\left|f(x)\right|$也为连续函数，可取到最大值$M$，设$x_0\in [0,1]$，有$\left|f(x_0)\right|=M>0$，由Lagrange定理有
+		
+		\[M=\left|f(x_0)\right|=\left|f(x_0) - f(0)\right|=\left|f'(\xi)x_0\right|,~\xi\in(0,x_0)\]
+		
+		则
+		\[M=\left|f'(\xi)x_0\right|\leq \left|f'(\xi)\right|\leq p\left|f(\xi)\right|\leq pM\]
+		
+		即有$(1-p)M\leq 0$，而$p<1$，所以$M\leq 0$，因此$M-0$。由此可知$f(x)\equiv 0,x\in [0,1]$
+		
+		类似可得$f(x)$在区间$[i,i+1](i=\pm 1,\pm 2)$上恒等于0，所以$f(x)$在区间$(-\infty,+\infty)$上恒等于0。
+	\end{proof}
+\end{problem}

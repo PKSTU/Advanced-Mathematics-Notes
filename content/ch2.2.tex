@@ -1,0 +1,513 @@
+\chapter{求导的基本法则}\label{ch:2}
+
+本章讲述函数求导的基本法则，有一部分内容大家在高中就已经学习过，我们以复习为主，同时补充一些新细节，具体需要大家：
+
+\begin{enumerate}
+	\item \textbf{熟练掌握}函数四则运算的求导法则，复合函数的链导法则；
+	\item \textbf{了解}反函数的求导法则；
+	\item \textbf{熟记}基本初等函数的导数；
+	\item \textbf{熟记}部分函数的高阶导数公式，\textbf{掌握}求高阶导数的方法；
+	\item \textbf{掌握}隐函数的求导法，参数方程确定的函数的求导法则。
+\end{enumerate}
+
+\section{复习背景}\label{sec:2.1}
+
+\subsection{导数的定义}\label{sec:2.1.1}
+
+\begin{definition}
+	设函数$f(x)$定义在$x_0$的某一邻域$U(x_0)$内，在此邻域内，当自变量在$x_0$处有改变量
+	$\Delta{x}$时，相应的函数有改变量$\Delta{y}=f(x_0+\Delta{x})-f(x_0)$，若当$\Delta{x}\to{0}$时这两个改变量之比的极限
+	
+	\begin{equation}
+		\lim_{\Delta{x}\to{0}}\frac{\Delta{y}}{\Delta{x}}=\lim_{\Delta{x}\to{0}}\frac{f(x_0+\Delta{x})-f(x_0)}{\Delta{x}}
+		\label{eq:2.1}
+	\end{equation}
+	
+	存在，则称函数$f$\textbf{在$x_0$处可导}，并称该极限值为$f$\textbf{在$x_0$处的导数。}
+\end{definition}
+
+\subsection{反函数的定义}\label{sec:2.1.2}
+
+\begin{definition}
+	若$f$是A上的\textbf{严格单调增（减）}函数，则它必存在反函数$f^{-1}$，且反函数$f^{-1}$也是值域$f(A)$上的严格单调增（减）函数。
+\end{definition}
+
+\section{知识点初始——函数四则运算的求导法则}\label{sec:2.2}
+
+\subsection{导数有理运算法则}\label{sec:2.2.1}
+
+设函数$u,v$在某一个数域内可导，则有如下运算法则\mn{在计算商的导数时，切记分子上是先对原函数分子上的函数求导。}：
+
+\begin{equation}
+	\begin{split}
+		&(u\pm{v})'(x)=u'(x)\pm{v'(x)}\\
+		&(uv)'(x)=u'(x)v(x)+u(x)v'(x)\\
+		&\qty(\frac{u}{v})'(x)=\frac{u'(x)v(x)-u(x)v'(x)}{v^2(x)},~(v(x)\neq{0})
+	\end{split}\label{eq:2.2}
+\end{equation}
+
+\subsection{几个三角函数求导的例子}\label{sec:2.2.2}
+我们将把以下几个高中不常见三角函数的求导过程作为导数有理运算的练习，请读者先自行计算，再参考过程。
+
+\begin{example}
+	计算$\tan{x}$的导数。
+	\[(\tan{x})'=(\frac{\sin{x}}{\cos{x}})'=\frac{(\sin{x})'\cos{x}-\sin{x}(\cos{x})'}{\cos^2{x}}=\frac{\cos^2{x}+\sin^2{x}}{\cos^2{x}}=\sec^2{x}\]
+\end{example}
+
+\begin{example}
+	计算$\sec{x}$的导数。
+	\[(\sec{x})'=(\frac{1}{\cos{x}})'=-\frac{(\cos{x})'}{\cos^2{x}}=\frac{\sin{x}}{\cos^2{x}}=\sec{x}\tan{x}\]
+\end{example}
+
+按照上述的思路，我们可以得到
+
+\begin{align*}
+	&(\cot{x})'=-\csc^2{x}\\
+	&(\csc{x})'=-\csc{x}\cot{x}
+\end{align*}
+
+请读者自行计算。
+
+\section{知识点初始——复合函数的求导法则}\label{sec:2.3}
+
+\subsection{求导的链式法则}\label{sec:2.3.1}
+设函数$u=g(x)$在$x$处可导，函数$y=f(u)$在与$x$相对应的$u$处可导，则复合函数\mn{复合函数的链导法则要求内层和外层的两个函数均在对应点可导。}$y=f[g(x)]$在$x$处可导，并且：
+\begin{equation}
+	\frac{\mathrm{d}y}{\mathrm{d}x}=f'(u)\cdot g'(x)\label{eq:2.3}
+\end{equation}
+或
+\begin{equation}
+	\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\mathrm{d}y}{\mathrm{d}u}\cdot\frac{\mathrm{d}u}{\mathrm{d}x}\label{eq:2.4}
+\end{equation}
+
+\begin{remark}
+	链导法则的名称非常形象，当函数有多层复合时，首先弄清复合关系，再\textbf{由外向内}一层一层逐个求导，这是链导法则的推广。
+\end{remark}
+
+\subsection{利用链式法则计算双曲函数的导数}\label{sec:2.3.2}
+
+\begin{example}
+	求双曲正弦函数$y = {\rm sh}(x) = \frac{{\rm e}^x-{\rm e}^{-x}}{2}$的导数。
+	\[({\rm sh}(x))'=\frac{1}{2}[({\rm e}^x)'-({\rm e}^{-x})']\]
+	又$u={\rm e}^{-x}$可以看成是$u={\rm e}^t$与$t=-x$的复合函数，所以
+	\[\frac{\mathrm{d}u}{\mathrm{d}x}=({\rm e}^{-x})'=\frac{\mathrm{d}u}{\mathrm{d}t}\cdot\frac{\mathrm{d}t}{\mathrm{d}x}={\rm e}^t\cdot{(-1)}=-{\rm e}^{-x}\]
+	因此
+	\[({\rm sh}(x))'=\frac{1}{2}({\rm e}^x+{\rm e}^{-x})={\rm ch}(x)\]
+	同理可以求得
+	\[({\rm ch}(x))'={\rm sh}(x)\]
+	\[({\rm th}(x))'=\frac{1}{{\rm ch}^2(x)}\]
+\end{example}
+
+\begin{remark}
+	（1）双曲函数是同学们上大学来第一次接触，需要同学们重点记忆。一方面在期中考试当中会有非常小的概率考察到；另一方面，在积分的第二类换元法中也有机会用到双曲函数。（2）熟练掌握链式求导法则以后，可以不再写出中间变量，提高做题的速度。
+\end{remark}
+
+\section{知识点初始——反函数的求导法则}\label{sec:2.4}
+
+\subsection{反函数的求导法则}\label{sec:2.4.1}
+
+设区间$I$上的严格单调连续\mn{严格单调连续的条件可以省略，在应用反函数求导法则时，只需要验证$f'(y)\neq{0}(y\in{I})$即可。}函数$x=f(y)$在点$y$处可导，且$f'(y)\neq{0}$，则它的反函数$y=f^{-1}(x)$在对应点$x$处可导，并且
+\begin{equation}
+	(f^{-1})'(x)=\frac{1}{f'(y)}\label{eq:2.5}
+\end{equation}
+或
+\begin{equation}
+	\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\mathrm{d}x/\mathrm{d}y}\label{eq:2.6}
+\end{equation}
+
+可以简单理解为：\textbf{若两个函数互为反函数，则它们的导数互为倒数。}
+
+\subsection{利用反函数的求导法则求反三角函数的导数}\label{sec:2.4.2}
+\begin{example}
+	求反正弦函数$y=\arcsin{x},~x\in{(-1,1)}$的导数。
+	
+	由于其为正弦函数$x=\sin{y},~y\in{\qty(-\frac{\pi}{2},\frac{\pi}{2})}$的反函数，并且当$y\in{\qty(-\frac{\pi}{2},\frac{\pi}{2})}$时，$(\sin{y})'=\cos{y}\neq{0}$，所以定理的所有条件都满足，则在区间$(-1,1)$有
+	
+	\[(\arcsin{x})'=\frac{1}{(\sin{y})'}=\frac{1}{\cos{y}}=\frac{1}{\sqrt{1-\sin^2{y}}}=\frac{1}{\sqrt{1-x^2}},~ x\in{(-1,1)}\]
+	
+	同理可得
+	
+	\[(\arccos{x})'=-\frac{1}{\sqrt{1-x^2}}\]
+	\[(\arctan{x})'=\frac{1}{1+x^2}\]
+\end{example}
+
+\begin{remark}
+	反三角函数大多数同学在高中接触不多，但在以后的学习中会经常用到，牢记反三角函数的导数对后期大家做积分题目的时候会有很大的帮助，反三角函数导数可以和三角函数类比记忆，其正负号的关系刚好与三角函数的求导相反。
+\end{remark}
+
+\section{知识点初始——初等函数的求导问题}\label{sec:2.5}
+
+初等函数是由基本初等函数经过有限次有理运算和复合运算构成的，可以利用导数的有理运算法则以及链式法则求得初等函数的导数。并且\textbf{可导初等函数的导数仍为初等函数}。在\textcolor{lbexacolor}{\ref{app:1}}\mn{点击红字即可跳转至附录A。}中给出基本初等函数的导数公式表。
+
+\section{知识点初始——高阶导数}\label{sec:2.6}
+
+\subsection{高阶导数的定义}\label{sec:2.6.1}
+
+\begin{definition}
+	若$f$的$n-1$阶导函数$f^{(n-1)}:I\to{\mathbb{R}}$在$x\in{I}$可导，则称$f$在$x$处\textbf{$n$阶可导}，$f^{(n-1)}$在$x$处的导数称为$f$在$x$处的\textbf{$n$阶导数},记作$f^{(n)}(x)=(f^{(n-1)})'(x)$.若$f$在$I$上处处$n$阶可导，则称$f$\textbf{在$I$上$n$阶可导}，$f^{(n)}$称为$f$在$I$上的\textbf{$n$阶导函数}，简称\textbf{$n$阶导数}。
+\end{definition}
+
+\subsection{连续可导的定义}\label{sec:2.6.2}
+
+\begin{definition}
+	若$f^{(n)}$在$I$上连续，则称$f$在$I$上\textbf{$n$阶连续可导}，或称$f$为$I$上的\textbf{$C^{(n)}$类函数}，记作$f\in{C^{(n)}(I)}$。
+\end{definition}
+
+\begin{remark}
+	$f(x)n$阶可导和$f(x)\in{C^{(n)}}$的区别：
+	
+	（1）$n$阶可导表明$f(x)$有$n$阶导数，但$f^{(n)}(x)$不一定连续；
+	
+	（2）$f(x)\in{C^{(n)}}$表明在$n$阶可导的基础上，$f^{(n)}(x)$连续。
+	
+	一般证明题中给出条件为$f(x)\in{C^{(n)}}$，但有时会给$f(x)$为$n$阶可导，希望同学们分辨清楚。
+\end{remark}
+
+\section{知识点初始——隐函数求导法}\label{sec:2.7}
+
+\subsection{隐函数的求导法}\label{sec:2.7.1}
+
+设由方程$F(x,f(x))\equiv 0$确定了一个隐函数$y=f(x)$.则在求导的时候很容易看出$F$是一个复合函数，利用复合函数的链导法则，方程两边同时对$x$求导，可以求得隐函数的导数\mn{（1）隐函数导数的几何意义同样是曲线的切线，因此在求曲线的切线方程中有重要意义。\\（2）准确来说，隐函数导数是建立在隐函数存在且可导的基础之上的，同时隐函数可以是一个局部概念。例子中圆的方程整体上是无法确定一个隐函数的，但是在第一象限是可以确定的；同时各个象限隐函数的导数形式是一致的。在习题当中，同学们不用考虑隐函数的存在性和可导性，只需要掌握求导方法就可以。}。
+
+\subsection{隐函数求导的注意点}\label{sec:2.7.2}
+
+\begin{example}
+	求由方程$x^2+y^2=1$所确定的隐函数的导数。
+	
+	利用隐函数的求导法，对方程两边求导得：
+	\[2x+2yy'=0\]
+	移项得
+	\[y'=-\frac{x}{y}\]
+\end{example}
+
+\section{由参数方程确定的函数的求导法则}\label{sec:2.8}
+
+\subsection{求一阶导数}\label{sec:2.8.1}
+
+若函数$x=x(t)$与$y=y(t)$在某个区间上可导，且$x'(t)\neq 0$，则有：
+
+\begin{equation}
+	\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{y'(t)}{x'(t)}\label{eq:2.7}
+\end{equation}
+
+\begin{remark}
+	一阶导数的求导非常容易记忆，简记为上下同时求导。
+\end{remark}
+
+\subsection{求二阶导数}\label{sec:2.8.2}
+
+二阶导数公式有两种形式，对应两种不同的使用情况。
+
+\subsubsection{求导数的数学表达式}
+
+\begin{equation}
+	\frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{\mathrm{d}}{\mathrm{d}t}(\frac{y'(t)}{x'(t)})\cdot \frac{1}{x'(t)}\label{eq:2.8}
+\end{equation}
+
+\begin{remark}
+	该公式可以简记为，一阶导数对参数求导，再除以自变量的一阶导数。在题目要求求出表达式时，建议使用该形式。
+\end{remark}
+
+\subsubsection{求某点二阶导数的值}
+
+\begin{equation}
+	\frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{x'(t)y''(t)-x''(t)y'(t)}{(x'(t))^3}\label{eq:2.9}
+\end{equation}
+
+\begin{remark}
+	该形式实际上是上一种的展开，利用商的求导法则可以快速记忆。在求具体值时，利用该形式可以分块计算，避免求导过程中的错误和冗长的算式带来的计算错误。
+\end{remark}
+
+\subsection{含隐函数形式的参数求导}\label{sec:2.8.3}
+当函数的参数形式变为$F(x,t)=0, G(y,t)=0$时，需要同时利用隐函数求导和参数求导，具体方法为：
+
+\begin{enumerate}
+	\item 单独对每个方程使用隐函数求导，解出$x'(t)$，$y'(t)$；
+	\item 利用参数方程求导的公式，结合对参数的一阶导数，来解出答案。
+\end{enumerate}
+
+\section{求高阶导数的方法}\label{sec:2.9}
+
+\subsection{常见函数的高阶导数公式}\label{sec:2.9.1}
+
+\begin{equation}
+	\begin{split}
+		&({\rm e}^x)^{(n)} = {\rm e}^x\\
+		&(\sin{x})^{(n)} = \sin{\qty(x+n\cdot \frac{\pi}{2})}\\
+		&(\cos{x})^{(n)}=\cos{\qty(x+n\cdot \frac{\pi}{2})}\\
+		&(x^{\alpha})^{(n)}=\alpha (\alpha -1)\cdots (\alpha -n+1)x^{\alpha -n}\quad (\alpha\in{\mathbb{R}},x>0)\\
+		&[\ln{(1+x)}]^{(n)}=(-1)^{(n-1)}\frac{(n-1)!}{(1+x)^n}\quad (x>-1)
+	\end{split}\label{eq:2.10}
+\end{equation}
+
+\begin{remark}
+	牢记这些高阶导数公式对理解和记忆下一节的Taylor公式有很大的帮助，同时也是利用Leibniz公式的基础。
+\end{remark}
+
+\subsection{利用归纳法求高阶导数}
+
+对于部分函数而言，可以先求出几阶导数，观察导数的特点和规律，猜出其高阶导数的形式，再利用数学归纳法证明\mn{填空题和选择题可以忽略证明过程，但最好检验一下找到的规律。}。
+
+\subsection{利用Leibniz公式求高阶导数}\label{sec:2.9.2}
+
+\subsubsection{Leibniz公式}
+
+设函数$u,v$都是$n$阶可导，则$\alpha u+\beta v$与$uv$也是$n$阶可导的，并且有：
+
+\begin{enumerate}
+	\item 线性性质\quad $(\alpha u+\beta v)^{(n)}=\alpha u^{(n)}+\beta v^{(n)},\quad \alpha,\beta\in{\mathbb{R}}$；
+	\item Leibniz公式\mn{可以类比二项式定理来记忆该公式。}
+	\begin{equation}
+		(uv)^{(n)}=\sum^n_{k=0}C^k_nu^{(n-k)}v^{(k)}\label{eq:2.11}
+	\end{equation}
+\end{enumerate}
+
+\subsubsection{使用Leibniz公式的情况和两个函数的选择}
+
+\begin{example}
+	已知$f(x)=x^3\sin{x}$，求$f^{(n)}(x)$。
+	
+	取$u=\sin{x},v=x^3$，根据公式\mn{在出现多项式函数和已知高阶导数的函数乘积时，可以考虑使用Leibniz公式。}可得
+	\begin{align*}
+		f^{(n)}(x)=&x^3(\sin{x})^{(n)}+n\cdot 3x^2(\sin{x})^{(n-1)}+\frac{n(n-1)}{2!}\cdot 6x(\sin{x})^{(n-2)}+\frac{n(n-1)(n-2)}{3!}\\
+		&\cdot 6(\sin{x})^{(n-3)}
+	\end{align*}
+\end{example}
+
+由于多项式求导的特殊性，一般将多项式函数设为$u$函数，以便在几次展开后以后的项均为0，简化计算。
+
+\subsection{利用Taylor公式求高阶导数}\label{sec:2.9.4}
+
+Taylor公式一般处理求$f^{(n)}(0)$的情况。当函数为一个可以用麦克劳林公式展开的因式和多项式相乘的形式时，考虑使用该方法，具体步骤为：
+
+\begin{enumerate}
+	\item 将可展开的因式进行麦克劳林展开，找到对应阶数的项；
+	\item 将整个函数进行麦克劳林展开，写成麦克劳林公式的形式；
+	\item 利用Taylor公式的系数为$\frac{f^{(n)}(0)}{n!}$的特点，求出答案。
+\end{enumerate}
+
+\begin{example}
+	已知$f(x)=x^2\ln{(1+2x)}$，求$f^{(2014)}(0)$。
+	
+	根据麦克劳林公式：
+	\begin{align*}
+		&\ln{(1+x)}=x-\frac{x^2}{2}+\cdots +\frac{x^{2013}}{2013}-\frac{x^{2014}}{2014}+o(x^{2014}) \\
+		&\ln{(1+2x)}=2x-\frac{2^2 x^2}{2}+\cdots +\frac{2^{2013} x^{2013}}{2013}-\frac{2^{2014} x^{2014}}{2014}+o(x^{2014}) \\
+		&f(x)=2x^3-\frac{2^2}{2}x^4+\cdots +\frac{2^{2013}}{2013}x^{2015}-\frac{2^{2014}}{2014}x^{2016}+o(x^{2016})
+	\end{align*}
+	
+	根据Taylor公式：
+	\[f(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+\cdots+\frac{f^{(2014)}(0)}{2014!}x^{2014}+R_{2014}(x)\]
+	由待定系数法\mn{该方法的本质是待定系数法，在对应系数时，注意不是两个公式的阶数对应，而是两个公式的次数对应。同时要确保将次数相同的项合并在一起。}，次数相同的项系数相同，得
+	\begin{align*}
+		&-\frac{2^{2012}}{2012}=\frac{f^{(2014)}(0)}{2014!} \\
+		&f^{(2014)}(0)=-\frac{2^{2012}}{2012}\cdot 2014!
+	\end{align*}
+\end{example}
+
+\section{幂指函数的求导方法}\label{sec:2.10}
+简单来说，我们将底数和指数上都存在自变量的函数称为幂指函数。
+
+\subsection{指数求导法}\label{sec:2.10.1}
+设$f(x)=u(x)^{v(x)}$，取指数得$f(x)={\rm e}^{v(x)\ln{u(x)}}$，再利用导数的四则运算以及链导法则即可完成。
+
+\subsection{对数求导法}\label{sec:2.10.2}
+
+设$y=u(x)^{v(x)}$，取对数得$\ln{y}=v(x)\ln{u(x)}$，移项后可以得到一个方程，$y$变为这个方程所确定的隐函数，利用隐函数的求导法则即可完成。
+
+\begin{remark}
+	对数求导法同所有隐函数求导一样，在不可导点和函数值为0的点的说明上会存在一些瑕疵，感兴趣的同学可以自行研究。以后做题当中不用讨论，直接应用即可。
+\end{remark}
+
+\section{习题}\label{2.11}
+
+\subsection{基础题}\label{2.11.1}
+
+\begin{problem}
+	设函数$y=y(x)$由方程$x^2-y+1={\rm e}^y$确定，求$\frac{\mathrm{d}^2y}{\mathrm{d}x^2}$。
+	\begin{solution}
+		方程两边关于$x$求导得：
+		\begin{equation}
+			2x-\frac{\mathrm{d}y}{\mathrm{d}x}={\rm e}^x\frac{\mathrm{d}y}{\mathrm{d}x}\label{eq:2.12}
+		\end{equation}
+	
+		即
+		
+		\[y'=\frac{2x}{1+{\rm e}^y}\]
+		
+		对式(\ref{eq:2.12})两边关于$x$求导，得
+		
+		\[{\rm e}^y\qty(\frac{\mathrm{d}y}{\mathrm{d}x})^2+(1+{\rm e}^y)\frac{\mathrm{d}^2y}{\mathrm{d}x^2}=2\]
+		
+		将一阶导数代入，移项化简得：
+		
+		\[\frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{2-{\rm e}^y\qty(\dfrac{\mathrm{d}y}{\mathrm{d}x})^2}{1+{\rm e}^y}=\frac{2(1+{\rm e}^y)^2-4x^2{\rm e}^y}{(1+{\rm e}^y)^3}\]
+	\end{solution}
+\end{problem}
+
+\begin{problem}
+	已知摆线的参数方程为
+	\begin{equation*}
+		\left\{
+		\begin{aligned}
+			&x=a(t-\sin{t})\\
+			&y=a(1-\cos{t})
+		\end{aligned}
+		\right.
+	\end{equation*}
+    \begin{enumerate}[label=(\arabic*)]
+    	\item 求摆线上任一点的切线和法线斜率；
+    	\item 求由该参数方程所确定的函数的二阶导数$\frac{\mathrm{d}^2y}{\mathrm{d}x^2}$。
+    \end{enumerate}
+    
+    \begin{solution}
+    	\begin{enumerate}[label=(\arabic*)]
+    		\item 通过参数方程的求导法则得：
+    		\begin{align*}
+    			&k_1=\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a\sin{t}}{a(1-\cos{t})}=\frac{\sin{t}}{1-\cos{t}}\\
+    			&k_2=-\frac{1}{k_1}=\frac{1-\cos{t}}{\sin{t}}
+    		\end{align*}
+    		\item 由(1)中已经求得的一阶导数，利用参数方程求导的第一种形式
+    		\begin{align*}
+    			\frac{\mathrm{d}^2y}{\mathrm{d}x^2}&=\frac{\mathrm{d}}{\mathrm{d}x}\qty(\frac{\sin{t}}{1-\cos{t}})\\
+    			&=\frac{\mathrm{d}}{\mathrm{d}t}\qty(\frac{\sin{t}}{1-\cos{t}})\cdot\frac{\mathrm{d}t}{\mathrm{d}x}\\
+    			&=\frac{\cos{t}(1-\cos{t})-\sin^2{t}}{(1-\cos{t})^2}\cdot\frac{1}{a(1-\cos{t})}\\
+    			&=-\frac{1}{a(1-\cos{t})^2}
+    		\end{align*}
+    	\end{enumerate}
+    \end{solution}
+\end{problem}
+
+\begin{problem}
+	设$y=\frac{1}{x^2+5x+6}$，求$y^{(100)}$。
+	
+	\begin{solution}
+		\[y=\frac{1}{x^2+5x+6}=\frac{1}{(x+2)(x+3)}=\frac{1}{x+2}-\frac{1}{x+3}\]
+		
+		根据高阶导数公式
+		\[(\frac{1}{ax+b})^{(n)}=\frac{(-1)^nn!a^n}{(ax+b)^{n+1}}\]
+		
+		代入，得
+		\[y^{(100)}=\frac{(-1)^{100}100!}{(x+2)^{101}}-\frac{(-1)^{100}100!}{(x+3)^{101}}\]
+	\end{solution}
+\end{problem}
+
+\begin{problem}
+	设$f(x)=x^2\sin{x}$，对于$n\geq 1$时，求$f^{(2n)}(0)$。
+	
+	\begin{solution}
+		令$u=x^2,v=\sin{x}$，由Leibniz公式得
+		
+		\[(uv)^{2n}=\sum^{2n}_{k=0}C^k_{2n}u^{(2n-k)}v^{(k)}\]
+		
+		由于$u(0)=0,u'(0)=0,u''(0)=2$，当$k\geq 3$时，$u^{(k)}(0)=0$，所以
+		
+		\[(x^2\sin{x})^{(2n)}=C^{2n-2}_{2n}2(\sin{x})^{(2n-2)}\]
+		
+		由于
+		\[(\sin{x})^{(2n-2)}\big|_{x=0}=\sin{(x+\frac{(2n-2)\pi}{2})}\Big|_{x=0}=0\]
+		
+		所以原式$=0$。
+	\end{solution}
+\end{problem}
+
+\begin{problem}
+	求函数$y=x^x$的导数
+	
+	\begin{solution}
+		由对数求导法，方程两侧同时取对数，得
+		\[\ln{y}=x\ln{x}\]
+		
+		利用隐函数求导，两端同时对$x$求导，得
+		\[\frac{y'}{y}=1+\ln{x}\]
+		
+		化简，得
+		\[y'=x^x(1+\ln{x})\]
+	\end{solution}
+\end{problem}
+
+\subsection{提高题及思考题}
+
+\begin{problem}
+	设$y=f(x)$由以下两个方程确定：
+	\begin{equation*}
+		\left\{ 
+		\begin{aligned}
+			&x=t^2+2t\\
+			&t^2-y+a\sin{y}=1
+		\end{aligned}
+		\right.
+	\end{equation*}
+	若$y(0)=b$，求$\frac{\mathrm{d}^2y}{\mathrm{d}x^2}\Big|_{t=0}$。
+	
+	\begin{solution}
+		这是一个参数方程求导和隐函数求导的综合题，方程组两边同时对$t$求导，得
+		\begin{equation*}
+			\left\{ 
+			\begin{aligned}
+				&x'(t)=2t+2\\
+				&2t-y'+a\cos{y}\cdot y'=0
+			\end{aligned}
+			\right.
+		\end{equation*}
+	
+		化简，得
+		\begin{equation*}
+			\left\{ 
+			\begin{aligned}
+				&x'(t)=2(t+1)\\
+				&y'(t)=\frac{2t}{1-a\cos{y}}
+			\end{aligned}
+			\right.
+		\end{equation*}
+	
+		求得一阶导数
+		\[\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{y'(t)}{x'(t)}=\frac{t}{(1+t)(1-a\cos{y})}\text{并且}\frac{\mathrm{d}y}{\mathrm{d}x}\Big|_{t=0}=0\]
+		
+		进一步，求得二阶导数
+		\[\frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{(\mathrm{d}y/\mathrm{d}x)'_t}{x'(t)}=\frac{\dfrac{(1-a\cos{y}-at(t+1)\sin{y}\cdot y'}{(t+1)^2(1-a\cos{y})^2}}{2(t+1)}\]
+		
+		注意到$y\big|_{t=0}=b,y'\big|_{t=0}=0$，得
+		
+		\[\frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{1}{2(1-a\cos{b})}\]
+	\end{solution}
+\end{problem}
+
+\begin{problem}
+	设$y={\rm e}^{ax}\sin{bx}$（$a,b$为非零常数），求$y^{(n)}$。
+	
+	\begin{solution}
+		利用欧拉公式\mn{${\rm e}^{xi}=\cos{x}+i\sin{x}$}，将三角函数化为指数函数，再计算导数。
+		
+		令$u={\rm e}^{ax}\cos{bx},v={\rm e}^{ax}\sin{bx}$，则
+		
+		\begin{align*}
+			u^{(n)}+iv^{(n)}&=(u+iv)^{(n)}=[{\rm e}^{ax}(\cos{bx}+i\sin{bx})]^{(n)}\\
+			&=[{\rm e}^{(a+bi)x}]^{(n)}=(a+bi)^n {\rm e}^{(a+bi)x}\\
+			&=(a^2+b^2)^{\frac{n}{2}}{\rm e}^{ax}[\cos{(bx+n\varphi)}+i\sin{(bx+n\varphi)}]
+		\end{align*}
+		
+		由此得
+		\[({\rm e}^{ax}\sin{bx})^{(n)}=(a^2+b^2)^{\frac{n}{2}}{\rm e}^{ax}\sin{(bx+n\varphi)},~\varphi=\arctan{\frac{b}{a}}\]
+	\end{solution}
+\end{problem}
+
+\begin{problem}[思考题]
+	设$y=\arctan{x}$，求$y^{(n)}(0)$。
+	
+	\begin{solution}
+		逐次求导难以找到高阶导数得规律，考虑利用Leibniz公式，因为
+		\[y'=\frac{1}{1+x^2}\]
+		
+		即
+		\[(1+x^2)y'=1\]
+		
+		对两端求$n$阶导数，利用Leibniz公式
+		\[\sum^n_{k=0}C^k_n(1+x^2)^{(k)}(y')^{(n-k)}=(1+x^2)\cdot y^{(n+1)}+2nxy^{(n)}+n(n-1)y^{(n-1)}=0\]
+		
+		令$x=0$，得
+		\[y^{(n+1)}(0)=-n(n-1)y^{(n-1)}(0)\]
+		
+		在该递推公式基础上再加上$y'(0)=1,y''(0)=0$可得$n$为偶数时，$y^{(n)}(0)=0$；$n$为奇数时，$y^{(n)}(0)=(-1)^{\frac{n-1}{2}}(n-1)!$。
+	\end{solution}
+\end{problem}

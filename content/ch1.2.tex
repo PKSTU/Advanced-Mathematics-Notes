@@ -1,0 +1,84 @@
+\chapter{数列的极限}
+
+本节关于数列极限主要介绍了一些定理，是一些基本内容，重点是要学会求数列极限的方法，在考试中和求函数极限一样都是重点，两者联系紧密，有着相似的方法。
+本节所讲的一些定义和定理是基础，学会求极限的方法是关键。
+
+对于数列极限的考查，多分为以下几种：一是直接求数列的极限，此类问题往往运用初等变换，夹逼法则，运用定积分的定义等方法；二是证明一个给出的数列收敛（即证明极限存在），多采用放缩等方法；三是给出递归形式的数列形式，证其收敛并求其极限。
+
+\section{数列极限的定义}
+\begin{definition}
+	如果对于任意给定的正数$\varepsilon$（不论它多么小）,总存在正数 N ,使得对于 $n>N $时的一切$x_n $不等式 $|x_n-a| < \varepsilon$ 都成立,那么就称常数a是数列$x_n$的极限,或者称数列$x_n$收敛于$a$。
+\end{definition}
+
+$\varepsilon$-N语言定义：$\forall \varepsilon>0$，$\exists N \in \textbf{N}_+$,使得$\forall n >N$，恒有$|a_n-a|<\varepsilon$，则称$a$为数列\{$a_n$\}的极限\mn{N与任意给定的正数$\varepsilon$有关，不等式 $|x_n-a| < \varepsilon$ 表明$x_n$与a的无限接近（$\varepsilon$可以是一个无限接近于0的正数）。}。
+
+数列存在极限，则称数列是收敛的，否则数列就是发散的。
+由数列极限的定义，我们可以用定义法来求极限（此类$\varepsilon-N$或$\varepsilon-\delta$方法对工科类学生要求较低，无需熟练掌握）。
+
+\section{收敛数列的性质}
+
+1.收敛数列的极限是唯一的。
+
+2.收敛数列是有界的。
+
+3.两个收敛数列的极限满足有理运算法则。
+
+4.\textbf{夹逼性}：设$\lim_{n \to \infty}a_n=\lim_{n \to \infty}b_n=a$.若$\exists N \in N_+$,使得$\forall n>N$,恒有$a_n \leq c_n \geq b_n$,则$\lim_{n \to \infty}c_n=a$。
+
+夹逼性可以帮助我们求一些数列的极限，适当的放缩是关键，对于一些特定的题目用夹逼原理会很方便。
+
+\begin{example}
+	求极限$\lim_{n \to \infty}\qty(\frac{1}{n^2+n+1}+\frac{2}{n^2+n+2}+\cdots+\frac{n}{n^2+n+n})$。
+	\begin{solution}
+		通过放缩\mn{对于此种$n$项和的极限问题，往往通过对分母或分子进行放缩，从而进行通分化简。}可以得到
+		$$\frac{1+2+\cdots+n}{n^2+n+n}<\frac{1}{n^2+n+1}+\frac{2}{n^2+n+2}+\cdots+\frac{n}{n^2+n+n}<\frac{1+2+\cdots+n}{n^2+n+1}$$
+		左右两个式子在$n \to \infty$时的极限都等于$\frac{1}{2}\qty(1+2+\cdots+n=\frac{n(n+1)}{2})$,故原式极限等于$\frac{1}{2}$。
+	\end{solution}
+\end{example}
+
+5.需要记住的几个极限：
+
+(1)$\lim_{n \to \infty} \sqrt[n]{a}=1(a>0)$；
+
+(2)$\lim_{n \to \infty} \sqrt[n]{n}=1$；
+
+(3)\textbf{重要极限}: $\lim_{n \to \infty} \qty(1+\frac{1}{n})^{n} = {\rm e}$。
+
+\section{单调有界准则}
+
+\textbf{单调有界准则}：单增有上界的数列必定收敛，单减有下界的数列必定收敛。
+
+单调有界准则的主要应用在于证明数列收敛，通常是先通过作差等方法得到数列单调性，其次通过放缩等方法证明数列有界，从而证明数列收敛。
+
+\begin{example}
+	证明数列$a_n=1+\frac{1}{2}+\cdots+\frac{1}{n}-\ln n$极限存在。
+	\begin{solution}
+		$a_{n+1}-a_n=\frac{1}{n+1}-\ln(1+n)-\ln n=\frac{1}{1+n}-\ln (1+\frac{1}{n})<0$,所以$a_n$单调递减，又有
+		\begin{align*}
+			a_n&=\sum_{k=1}^{n} \frac{1}{k} -\ln (\frac{n}{n-1} \cdot \frac{n-1}{n-2} \cdot \cdots \cdot \frac{2}{1})\\
+			&=\sum_{k=1}^{n} \frac{1}{n}-\sum_{k=1}^{n-1} \ln (\frac{n+1}{n})\\
+			&=\sum_{k=1}^{n-1}[\frac{1}{k}-\ln (1+\frac{1}{k})]+\frac{1}{n}>\frac{1}{n}>0\\
+		\end{align*}
+		所以$a_n$有下界。从而由单调有界准则可以得到$a_n$极限存在\mn{此极限的值称为欧拉常数，运用欧拉常数也可以求一些数列极限。}。
+	\end{solution}
+\end{example}
+
+\section{Cauchy数列}
+\subsection{Cauchy数列的定义}
+\begin{definition}
+	设$\{a_n\}$为一实数列，若满足条件：$\forall \varepsilon >0$,$\exists N \in N_+$,使得$\forall m,n>N$,恒有$|a_m-a_n|<\varepsilon.$则称$\{a_n\}$为Cauchy数列。
+\end{definition}
+\subsection{Cauchy收敛原理}
+数列收敛的充分必要条件为它是Cauchy数列。
+\begin{example}
+	设$x_n=\frac{\sin 1}{2}+\frac{\sin 2}{2^2}+\cdots+\frac{sin n}{2^n}$，试证$\{x_n\}$收敛。
+	\begin{proof}
+		因为
+		$$|x_{n+p}-x_n| \leq \frac{1}{2^{n+1}}+\frac{1}{2^{n+2}}+\cdots+\frac{1}{2^{n+p}}=\frac{1}{2^{n+!}}(1+\frac{1}{2}+\cdots+\frac{1}{2^{p-1}}) $$
+		$$\leq \frac{1}{2^{n+1}}(\frac{1}{1-\frac{1}{2}})=\frac{1}{2^n}<\frac{1}{n}$$
+		$\forall \varepsilon >0$\mn{只要$\frac{1}{n}<\varepsilon$，即$n>\frac{1}{\varepsilon}$}，令$N=\frac{1}{\varepsilon}$，则$n>N$时，有$|x_{n+p}-x_n|<\varepsilon$，即证。
+	\end{proof}
+\end{example}
+\begin{remark}
+	运用Cauchy收敛原理可证明一些数列收敛，不过其在考试中很少见，闭区间套定理以及Weierstrass定理(详情可参考教材)的应用更少，如果仅仅为了应付高数考试，只需简单理解即可（当然，也可以直接忽略）。
+\end{remark}

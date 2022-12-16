@@ -1,0 +1,276 @@
+\chapter{函数性态的研究}\label{ch:6}
+
+本节的内容是对前五节内容的综合和提升，在学习过程中，同学们要学以致用，温故知新，具体需要大家：
+
+\begin{enumerate}
+	\item \textbf{熟练掌握}函数的极值，单调区间，最值的求法；
+	\item \textbf{深刻理解}函数的凹凸性，\textbf{熟练掌握}函数的凹凸区间和拐点的求法；
+	\item \textbf{掌握}函数各种渐近线的求法，会大致作出函数的图像。
+\end{enumerate}
+
+\section{复习背景}
+\subsection{函数的极值}
+\begin{definition}
+	设有函数$f:I\to\mathbb{R}$，若$\exists\delta>0$，使得$\forall x\in U(x_0,\delta)\subseteq I$，恒有$f(x)\geq f(x_0)(\leq f(x_0))$，则称$f$在$x_0$取得极小（大）值$f(x_0)$。$f$的极小值与极大值统称为$f$的极值，使$f$取得极值点的点$x_0$称为$f$的极值点。
+\end{definition}
+
+\begin{remark}
+	极值点指的是取得极值时\textbf{自变量的值}，并不是极值点的坐标。
+\end{remark}
+
+\subsection{Lagrange定理}
+\begin{theorem}
+	若函数$f:[a,b]\to\mathbb{R}$满足条件：（1）$f$在$[a,b]$连续；\quad（2）$f$在$(a,b)$内可导；则至少存在一点$\xi\in (a,b)$，使
+	\begin{equation}
+		f(b)-f(a)=f'(\xi)(b-a)\label{eq:6.1}
+	\end{equation}
+\end{theorem}
+
+\subsection{Taylor定理}
+\begin{theorem}
+	设函数$f$在区间$I$上$n+1$阶可导，$x_0\in I$，则对任何$x\in I$，在$x$与$x_0$之间至少存在一点$\xi$，使得
+	\begin{equation}
+		f(x)=\sum^n_{k=0}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}\label{eq:6.2}
+	\end{equation}
+\end{theorem}
+\section{知识点初始——函数的单调性}
+设$f:I\to\mathbb{R}$在$I$上连续，在$I$内可导，则以下命题成立：
+\begin{enumerate}
+	\item $f$在$I$上单调增（减）的充要条件是在$I$内$f'\geq 0$($f'\leq 0$)；
+	\item 若在$I$内$f'>0$（$f'<0$），则$f$在$I$上严格单调增（减）\mn{若$f$在$I$上严格单调增（减），$f'$在$I$内不一定处处为正（负）。}。
+\end{enumerate}
+\begin{remark}
+	为了判定给定函数$f$的单调区间，应当先求出$f'=0$的根以及不可导的点，再分区间讨论函数的单调性。
+\end{remark}
+\section{知识点初始——函数的极值}
+\subsection{函数的驻点}
+将使$f'(x)=0$的点称为$f$的驻点，可导函数的极值点必定是驻点。
+\subsection{函数极值点的第一条件}
+设$f$在$x_0$的某邻域$U(x_0)$内可导，并且$f'(x_0)=0$，
+\begin{enumerate}
+	\item 若$x<x_0$时$f'(x)\geq 0$，$x>x_0$时$f'(x)\leq 0$，则$f$在$x_0$处取最大值；
+	\item 若$x<x_0$时$f'(x)\leq 0$，$x>x_0$时$f'(x)\geq 0$，则$f$在$x_0$处取最小值；
+	\item 若$f'(x)$在$x_0$的左右两侧符号不变，则$f$在$x_0$处不取极值。
+\end{enumerate}
+\begin{remark}
+	在讨论极值点时，\textbf{一定不能忽略不可导的点}；应当\textbf{利用极值点的定义}来判断不可导的点，这一点在考试中经常作为考点出现。
+\end{remark}
+\subsection{函数极值点的第二条件}
+设$f$在$x_0$处\textbf{二阶可导}，并且$f'(x_0)=0,f''(x_0)\neq 0$，则当$f''(x_0)>0(<0)$时，$f$在$x_0$处取极小（大）值。
+\subsection{函数极值点的第三条件}
+设$f$在$x_0$处\textbf{$n(n\geq 2)$阶可导}，并且$f'(x_0)=f''(x_0)=\cdots =f^{(n-1)}(x_0)=0,f^{(n)}(x_0)\neq 0$，
+\begin{enumerate}
+	\item 当$n$为偶数时，$x_0$必为极值点，若$f^{(n)}(x_0)>0$，则$x_0$为极小值点；若$f^{(n)}(x_0)<0$，则$x_0$为极大值点；
+	\item 当$n$为奇数时，$x_0$不是极值点。
+\end{enumerate}
+\section{知识点初始——函数的最值}
+\subsection{函数最值的求法}
+若$f\in C[a,b]$，则函数必定在区间上有最值，最值可能出现在：
+\begin{enumerate}
+	\item 区间内的极值点（可能是驻点或不可导的点）；
+	\item 区间的端点。
+\end{enumerate}
+
+求出极值点，再将其与端点值比较，即可得到最值。
+\subsection{函数最值的性质}
+区间$I$上的最大值$M$（最小值$m$）有如下性质\mn{该性质也是证明不等式的常用方法之一。}：
+\[f(x)\leq M(f(x)\geq m),x\in I\]
+\section{知识点初始——函数图像的凹凸性与拐点}
+不同教材对凹凸性的定义不同，此处特别说明是从图像的几何特性上定义的。
+\subsection{函数图像的凹凸性}
+\subsubsection{凹凸性的定义}
+\begin{definition}
+	设函数$y=f(x)$在区间$I$上连续，若对$I$中任意两点，曲线上对应的弧段始终位于两点连线构成的弦的下（上）方，则称函数$f(x)$在区间$I$中的图像是凹（凸）的。
+\end{definition}
+\subsubsection{凹凸性的性质}
+若$f(x)$在$I$上是凹的，则对$\forall x_1,x_2\in I,\lambda\in (0,1)$，有
+\[f(\lambda x_1+(1-\lambda x_2))<\lambda f(x_1)+(1-\lambda)f(x_2)\]
+
+即自变量线性组合的函数值总小于函数的对应线性组合。
+
+\textbf{特别地，当$\lambda =\frac{1}{2}$时}，有
+\[f(\frac{x_1+x_2}{2})<\frac{f(x_1)+f(x_2)}{2}\]
+
+函数图像为凸的时候有对应性质\mn{函数图像凹凸性的性质在不等式的证明当中经常用到，特别是系数为$\frac{1}{2}$的形式。}。
+\subsection{函数的拐点}
+\subsubsection{拐点的定义}
+\begin{definition}
+	连续曲线上凹的图像与凸的图像的转变点称为此曲线的拐点，拐点处二阶导数为0。
+\end{definition}
+\begin{remark}
+	拐点是用\textbf{平面有序数组}表示的，是真正意义上的点，注意与极值点区分。
+\end{remark}
+\subsubsection{拐点的第一充分条件}
+若$f(x)$二阶可导，且$f''(x_0)$为$f''$的变号零点，则$(x_0,f(x_0))$为$f$的拐点。
+\subsubsection{拐点的第二充分条件}
+若$f(x)$在$x_0$的去心邻域内可导，且$f''$在$x_0$左右变号，则$(x_0,f(x_0))$为$f$的拐点\mn{该条件说明二阶导数不连续的点也有可能是函数的拐点。}。
+\subsubsection{拐点的第三充分条件}
+若$f(x)$在$U(x_0,\delta)$内三阶可导，且$f''(x_0)=0,f'''(x_0)\neq 0$，则$(x_0,f(x_0))$为$f$的拐点。
+\subsubsection{拐点的第四充分条件}
+设$f$在$x_0$处\textbf{$n(n\geq 3)$阶可导}，并且$f'''(x_0)=f^{(4)}(x_0)=\cdots =f^{(n-1)}(x_0)=0,f^{(n)}(x_0)\neq 0$，
+\begin{enumerate}
+	\item 当$n$为奇数时，$(x_0,f(x_0))$是拐点；
+	\item 当$n$为偶数时，$(x_0,f(x_0))$不是拐点。
+\end{enumerate}
+\section{函数的渐近线与函数作图}
+\subsection{函数的渐近线}
+\subsubsection{水平渐近线}
+$\lim_{x\to\infty}f(x)=A\xrightarrow{} y=A$为水平渐近线（单侧极限成立即可）。
+\subsubsection{铅直渐近线}
+$\lim_{x\to a}f(x)=\infty\xrightarrow{}x=a$为铅直渐近线（可以分别求左右极限，一般关注函数的间断点）。
+\subsubsection{斜渐近线}
+$\lim_{x\to\infty}\frac{f(x)}{x}=k,\quad \lim_{x\to\infty}[f(x)-kx]=b\xrightarrow{}y=kx+b$为斜渐近线（单侧极限成立即可）。
+\subsection{函数作图的步骤}
+（1）求定义域和间断点；
+
+（2）考察奇偶性，周期性，有界性；
+
+（3）求出一阶导数，二阶导数的零点和不可导的点；
+
+（4）判断单调区间，极值点，凹凸区间，拐点；
+
+（5）求渐近线；
+
+（6）结合特殊位置函数值，描点画图，画出渐近线。
+\section{序轴标根法刻画多项式函数的图像}
+在遇到高阶多项式以最简因式形式给出时，可以利用该方法大致刻画多项式的形态：
+
+（1）将自变量的系数全部整理为正数；
+
+（2）将函数的零点按数轴位置标在$x$轴上；
+
+（3）若多项式系数为正，自左上方开始由正无穷向下，遇到根的对应因式为奇数次方就穿过，遇到根的对应因式为偶数次方就与它相切，即“奇穿偶切”，经过每一个零点；若多项式系数为负，则图像关于$x$轴对称即可。
+\begin{remark}
+	（1）读者可以自行探究该方法的原理，在遇到变形时（如加入绝对值）可以灵活应对；
+	（2）该方法多用于解决高阶多项式的不等式问题，高阶多项式的极值点，拐点问题。
+\end{remark}
+\section{证明不等式的常见方法}
+（1）利用导数的定义；
+
+（2）利用微分中值定理；
+
+（3）利用函数的单调性；
+
+（4）利用Taylor公式；
+
+（5）利用函数的极值和最值；
+
+（6）利用函数的凹凸性。
+
+\section{习题}
+\begin{problem}
+	已知$f(x)$在$x=0$某邻域内连续，$\lim_{x\to 0}\frac{f(x)}{1-\cos{x}}=2$，则在$x=0$处$f(x)$\xparen
+	\begin{xchoices}[showanswer=true]
+		\item 不可导
+		\item 可导且$f'(0)\neq 0$
+		\item 取得最大值
+		\item* 取得最小值
+	\end{xchoices}
+	\vspace{0.5em}
+	\begin{solution}
+		由于$\lim_{x\to 0}\frac{f(x)}{1-\cos{x}}=2>0$，由极限的保号性，存在$x=0$的去心邻域，在此去心邻域内$\frac{f(x)}{1-\cos{x}}>0$，又$1-\cos{x}>0$，则在此去心邻域内$f(x)>0$。再由$\lim_{x\to 0}\frac{f(x)}{1-\cos{x}}=2$知，$\lim_{x\to 0}f(x)=0$，又$f(x)$在$x=0$连续，从而$f(0)=0$，则存在$x=0$的邻域，在此邻域内$f(x)\geq f(0)$，则$f(x)$在$x=0$处取极小值，故选(D)
+	\end{solution}
+\end{problem}
+\begin{remark}
+	本题\textbf{不能对已知极限用L'Hospital法则}，因为原题只假定$f(x)$连续。
+\end{remark}
+
+\begin{problem}
+	证明：$\tan{x}=1-x$在$(0,1)$内有唯一实根。
+	\begin{proof}
+		令$f(x)=\tan{x}-1+x$，显然$f(x)$在$[0,1]$上连续，且$f(0)=-1<0,f(1)=\tan{1}>0$，由零点定理知，$f(x)$在$(0,1)$内至少有一个零点，即方程$\tan{x}=1-x$在$(0,1)$内至少有一个实根；又
+        \[f'(x)=\sec^2{x}+1>0,\quad x\in [0,1]\]
+
+        则$f(x)$在$(0,1)$上严格单调增，$f(x)$在$(0,1)$内最多一个零点，即方程$\tan{x}=1-x$在$(0,1)$内最多有一个实根；综上方程$\tan{x}=1-x$在$(0,1)$内有且只有一个实根。
+	\end{proof}
+\end{problem}
+\begin{problem}
+	设$f''(x)<0,f(0)=0$，证明：对任何$x_1>0,x_2>0$，有$f(x_1+x_2)<f(x_1)+f(x_2)$
+	\begin{solution}
+		令\[G(x)=f(x_1+x)-f(x)-f(x_1)\]
+        \[G'(x)=f'(x_1+x)-f'(x)=f''(\xi)x_1<0\quad(x<\xi <x+x_1)\]
+
+        则$G(x)$单调减，从而有$G(x_2)<G(0)$，即
+        \[f(x_1+x_2)-f(x_2)-f(x_1)<f(x_1)-f(0)-f(x_1)=0\]
+        \[\Rightarrow f(x_1+x_2)<f(x_1)+f(x_2)\]
+	\end{solution}
+\end{problem}
+
+\begin{problem}
+	设$p,q>0$，且$\frac{1}{p}+\frac{1}{q}=1$，又设$a>0,b>0$，求证：$ab\leq \frac{1}{p}a^p+\frac{1}{q}b^q$。
+	\begin{proof}
+		对不等式两端同时取对数
+        \[\ln{(ab)}\leq \ln{(\frac{1}{p}a^p+\frac{1}{q}b^q)}\]
+
+        令$f(x)=\ln{x},\quad x\in (0,+\infty)$，则$f''(x)=-\frac{1}{x^2},\quad x\in (0,+\infty)$
+
+        $f(x)=\ln{x}$为$(0,+\infty)$上的凹函数，从而有
+        \[f\qty(\frac{1}{p}a^p+\frac{1}{q}b^q)\geq \frac{1}{p}f(a^p)+\frac{1}{q}f(b^q)\]
+        \[\ln{(\frac{1}{p}a^p+\frac{1}{q}b^q)}\geq \frac{1}{p}a^p+\frac{1}{q}b^q=\ln{a}+\ln{b}=\ln{(ab)}\]
+        \[ab\leq \frac{1}{p}a^p+\frac{1}{q}b^q\]
+	\end{proof}
+\end{problem}
+
+\begin{problem}
+	证明不等式
+    \[\cos{\sqrt{2}x}<-x^2+\sqrt{1+x^4}\quad x\in (0,\frac{\sqrt{2}}{4}\pi)\]
+	\begin{proof}
+		令
+        \[f(x)=\sqrt{1+x^4}-x^2-\cos{\sqrt{2}x}\]
+        \[f'(x)=2x(\frac{x^2}{\sqrt{1+x^4}}-1)+\sqrt{2}\sin{\sqrt{2}x}\]
+
+        由Taylor展开式，易得
+        \[\sin{x}>x-\frac{1}{3!}x^3(x>0)\]
+
+        所以
+        \[f'(x)>2x(\frac{x^2}{\sqrt{1+x^4}}-1)+2x-\frac{2x^3}{3}=\frac{2x^3}{\sqrt{1+x^4}}-\frac{2x^3}{3}>0\]
+
+        因此，当$x\in (0,\frac{\sqrt{2}}{4}\pi)$时，$f(x)$单调增加，又$f(0)=0$，所以$f(x)>0$。
+	\end{proof}
+\end{problem}
+\newpage
+\begin{problem}[思考题]
+	证明\textbf{赫尔德不等式}：设实数$\alpha,\beta$满足$\frac{1}{\alpha}+\frac{1}{\beta}=1$，且$a_i,b_i(i=1,\cdots,n)$为非负实数，则当$\alpha>1$时
+    \[\sum^n_{i=1}a_i b_i\leq (\sum^n_{i=1}a^\alpha_i)^{\frac{1}{\alpha}}(\sum^n_{i=1}b^\beta_i)^{\frac{1}{\beta}}\]
+
+    当$\alpha<1$时
+    \[\sum^n_{i=1}a_i b_i\geq (\sum^n_{i=1}a^\alpha_i)^{\frac{1}{\alpha}}(\sum^n_{i=1}b^\beta_i)^{\frac{1}{\beta}}\]
+\end{problem}
+
+\begin{proof}
+	记$p_i=b_i^\beta$，由$\frac{1}{\alpha}+\frac{1}{\beta}=1$易得，当$\alpha<1$时，原不等式等价于
+	\[\sum^n_{i=1}a_i p_i^{1-\frac{1}{\alpha}}\leq (\sum^n_{i=1}a^\alpha_i)^{\frac{1}{\alpha}}(\sum^n_{i=1}p_i)^{1-\frac{1}{\alpha}}\]
+
+	等价于
+	\[\sum^n_{i=1}(\frac{p_i}{\sum^n_{i=1}p_i})\alpha_i p_i^{-\frac{1}{\alpha}}\leq (\sum^n_{i=1}(\frac{a_i^\alpha}{\sum^n_{i=1}p_i}))^{\frac{1}{\alpha}}\]
+
+	记$x_i=a_i p_i^{-\frac{1}{\alpha}},\lambda_i=\frac{p_i}{\sum^n_{i=1}p_i}$，则上面不等式化为
+	\[(\sum^n_{i=1}\lambda_i x_i)^\alpha\leq \sum^n_{i=1}\lambda_i x_i^\alpha\]
+
+	且$\sum^n_{i=1}\lambda_i=1$，故只需讨论函数$f(x)=x^\alpha(\alpha>1)$的凸性。
+
+	令$f(x)=x^\alpha,\quad x\geq 0$，则$f''(x)=\alpha(\alpha-1)x^\alpha$，当$\alpha>1$时，$f''(x)>0$，$f(x)$是下凸函数。
+
+	对任意一组非负实数$p_i(i=1,\cdots,n)$，记$\lambda_i=\frac{p_i}{\sum^n_{i=1}p_i}$，则$\sum^n_{i=1}\lambda_i=1$，对任意$x_i\geq 0$，利用凸函数的Jensen不等式,得
+	\[(\sum^n_{i=1}\lambda_i x_i)^\alpha\leq \sum^n_{i=1}\lambda_i x_i^\alpha\]
+	
+	即
+	\[\qty(\sum^n_{i=1}\frac{p_i x_i}{\sum^n_{i=1}p_i})^\alpha\leq \sum^n_{i=1}\frac{p_i x_i}{\sum^n_{i=1}p_i}\]
+	
+	即
+	\[\sum^n_{i=1}p_i x_i\leq \qty(\sum^n_{i=1}a^\alpha_i)^{\frac{1}{\alpha}}\qty(\sum^n_{i=1}p_i)^{1-\frac{1}{\alpha}}\]
+
+	取$a_i=p_i^{\frac{1}{\alpha}},b_i=p_i^{\frac{1}{\beta}}$，则有
+	\[\sum^n_{i=1}a_i b_i\leq \qty(\sum^n_{i=1}a^\alpha_i)^{\frac{1}{\alpha}}\qty(\sum^n_{i=1}b^\beta_i)^{\frac{1}{\beta}}\]
+	
+	同理可证$\alpha<1$的情况。
+\end{proof}
+
+\begin{remark}
+	（1）当$\alpha=\beta=2$时，赫尔德不等式即为常见的\textbf{柯西不等式}；
+
+	（2）凸函数的\textbf{Jensen不等式}：
+
+	设$f(x)\in C(I)$，则$f(x)$是$I$上下凸函数的充要条件为：$\forall x_i\in I,\forall \lambda\in(0,1)(i=1,\cdots,n)$，且$\sum^n_{i=1}\lambda_i=1$，恒有
+	\[f\qty(\sum^n_{i=1}\lambda_i x_i)\leq \sum^n_{i=1}\lambda_i f(x_i)\]
+\end{remark}

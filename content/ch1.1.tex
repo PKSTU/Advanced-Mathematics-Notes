@@ -1,0 +1,102 @@
+\chapter{集合、映射与函数}
+
+关于集合、映射与函数，我们在高中时就已经十分熟悉了，学习本节，我们只需要简单理解其含义即可，另外我们会接触到有界性、邻域相关的概念，同时需要了解并记住一些常见的函数。在考试中，本节内容占比不大，因此本节对于高中已学的内容不做过多叙述，只需抓住一些重点即可。
+
+\section{集合}
+\begin{enumerate}
+	\item 集合: 具有某种特定性质的对象的全体，组成这个集合的个别对象称为该集合的元素。
+	\item 区间:是指介于某两个实数之间的全体实数， 这两个实数叫做区间的端点。
+	\item \textbf{邻域}: 设$a$与$\delta$是两个实数，且$\delta$>0。数集$\{x \mid |x-a|<\delta\}$称为点$a$的$\delta$邻域，点$a$叫做这邻域的中心，$\delta$叫做这邻域的半径。记作$U_\delta(a)=\{x\mid a-\delta<x<a+\delta\}$。
+
+	点$a$的去心邻域，记作$\mathring{U}(a)=\{x \mid 0<|x-a|< \delta \}$。
+\end{enumerate}
+
+\section{有界性}
+\begin{enumerate}
+	\item 上有界：$\exists L \in \mathbb{R}$，使得$\forall x \in A$，都有$x\leq L$；
+
+	\item 下有界：$\exists l \in \mathbb{R}$，使得$\forall x \in A$，都有$x \geq l$；
+	
+	\item 集合$A$有界：$A$既有上界又有下界。
+	
+	\item \textbf{确界}：上确界为最小上界，下确界为最小下界(可类比函数的最大最小值来理解)
+	
+	设$A$为非空实数集，若$\exists s \in \mathbb{R}$，满足：
+	\begin{enumerate}
+		\item $\forall x \in A$，$x \geqslant $（$\leqslant$）$s$；
+		\item $\forall \varepsilon > 0$，$\exists x_0 \in A$，使$x_0 >(<) s -(+) \varepsilon$。
+	\end{enumerate}
+	则$s$为A的上确界(下确界)，记作$\sup A$（$\inf A$）。
+	\begin{remark}
+		此类定义语言对非数学专业的学生要求不高（包括后面的$\varepsilon$-$\delta$语言，只需简单理解即可，理解时只需将$\epsilon$看成一个很小很小的数。
+	\end{remark}
+\end{enumerate}
+
+\section{映射和函数}
+早在初中我们便已学过映射和函数的相关概念，具体内容可参考高数课本。
+\subsection{几种特殊函数}
+\begin{enumerate}
+	\item 取整函数，$y=[x]$,$[x]$表示不超过$x$的最大整数。
+	\item 符号函数，
+	\begin{eqnarray}
+		y={\rm sgn} x=
+		\begin{cases}
+			1,  & x>0 \\
+			0,  & x=0 \\
+			-1, & x<0
+		\end{cases}
+	\end{eqnarray}
+	\item 狄利克雷函数，
+	\begin{eqnarray}
+		y=D(x)=
+		\begin{cases}
+			1, & x\in \mathbb{Q} \\
+			0, & x\in \mathbb{R} \backslash \mathbb{Q}
+		\end{cases}
+	\end{eqnarray}
+	\item 取最值函数，
+	如$y={\rm max}\{f(x),g(x)\}$，$y={\rm min}\{f(x),g(x)\}$，
+	如在题目中遇到此类取最值函数，只需画出函数图像，便可简单转为分段函数来处理。
+\end{enumerate}
+
+\subsection{反函数}
+
+对于反函数，我们只需掌握反函数与原函数的函数图像关于直线y=x对成即可。常见的反函数有反三角函数，需要我们掌握。
+
+$y=\sin x$对应的反函数为$y=\arcsin x$,$y=\cos x $对应的反函数为$y=\arccos x$,$y=\tan x $对应的反函数为$y=\arctan x$.
+
+在遇到与反函数有关的问题时，可从两者图像关于$y=x$对称入手，在需要用到与反函数有关的性质时，也可通过画原函数关于$y=x$对称的函数图像来解决。
+
+总的来说，关于反函数，我们只需要理解反函数是如何得到的，以及会用三种常见的反三角函数（后面关于反三角函数的导数也只需要记住这三种常见的即可），另外记住反函数与原函数的函数图像是关于$y=x$对称的。
+\begin{example}
+	设$f: \mathbb{R} \to \mathbb{R}$ 单调递增，$f^{-1}$是其反函数，$x_1$是方程$f(x)+x=a$的根，$x_2$是方程$f^{-1}(x)+x=a$的根，求$x_1$+$x_2$的值。
+	\begin{solution}
+		由$x_1$是方程$f(x)+x=a$的根，可知$f(x_1)+f^{-1}[f(x)]=a$因为$x=f^{-1}[f(x)]$。
+		
+		所以$f(x_1)$是方程$f^{-1}(x)+x=a$的根，又$f$单增，则$f^{-1}(x)+x$单增，可以得到方程$f^{-1}(x)+x=a$只有一个根，所以$f(x_1)=x_2$，所以$x_1+x_2=x_1+f(x_1)=a$。
+	\end{solution}
+\end{example}
+
+\section{一些补充}
+\subsection{双曲函数}
+
+双曲正弦: ${\rm sh} x=\frac{{\rm e}^x-{\rm e}^{-x}}{2}$
+
+双曲余弦：${\rm ch} x=\frac{{\rm e}^x+{\rm e}^{-x}}{2}$
+
+双曲正切：${\rm th} x=\frac{{\rm e}^x-{\rm e}^{-x}}{{\rm e}^x+{\rm e}^{-x}}$
+\begin{remark}
+	关于双曲函数，我们需要知道它与三角函数是十分类似的，具体一些性质可参考课本（类比三角函数去记忆即可），在后面不定积分的计算以及其它问题中，我们可能会需要用到双曲函数。因此需要有一个关于这个函数的印象。
+\end{remark}
+
+\subsection{极坐标与参数方程}
+
+极坐标与参数方程是高中选修4-4的内容，如果高中未学过选修4-4，可参照高数课本的附录1.
+
+\subsection{积化和差和和差化积公式}
+
+关于积化和差和和差化积公式，在后续的解题中会偶尔用到（尤其是在高数下的傅里叶变换求积分的过程中），积化和差和和差化积公式的本质是和角公式和差角公式，可参考高数课本附录。
+
+\subsection{一些常见曲线及其图像}
+
+常见的曲线有摆线、星形线。心形线、双纽线、玫瑰线\mn{在高数下的二重积分部分应用比较多，详情可参考高数课本附录。}。
